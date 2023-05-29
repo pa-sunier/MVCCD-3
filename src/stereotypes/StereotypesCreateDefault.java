@@ -124,7 +124,21 @@ public class StereotypesCreateDefault {
                     Preferences.STEREOTYPE_U_LIENPROG,
                     MCDAttribute.class.getName(),
                     i );
+        }
+    }
 
+    private void createStereotypesMCDUF() {
+        for (int i = 0; i < Preferences.STEREOTYPE_UF_MAX; i++){
+            createStereotypeMulti(
+                    Preferences.STEREOTYPE_UF_NAME,
+                    Preferences.STEREOTYPE_UF_LIENPROG,
+                    MCDUnique.class.getName(),
+                    i );
+            createStereotypeMulti(
+                    Preferences.STEREOTYPE_UF_NAME,
+                    Preferences.STEREOTYPE_UF_LIENPROG,
+                    MCDAttribute.class.getName(),
+                    i );
         }
     }
 

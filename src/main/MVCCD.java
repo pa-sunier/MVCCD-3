@@ -1,8 +1,11 @@
 package main;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import console.ViewLogsManager;
-import java.io.Console;
 import messages.MessagesBuilder;
+
+import javax.swing.*;
+import java.io.Console;
 
 public class MVCCD {
 
@@ -21,6 +24,11 @@ public class MVCCD {
             });
 
             */
+      try {
+        UIManager.setLookAndFeel( new FlatLightLaf() );
+      } catch( Exception ex ) {
+        System.err.println( "Failed to initialize LaF" );
+      }
       MVCCDManager.instance().start();
 
     } catch (Exception e) {

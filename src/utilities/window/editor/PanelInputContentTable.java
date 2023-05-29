@@ -340,7 +340,6 @@ public abstract class PanelInputContentTable extends PanelInputContent
             btnUp.setEnabled(false);
             btnDown.setEnabled(false);
         }
-
     }
 
 

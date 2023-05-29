@@ -1,71 +1,16 @@
 package project;
 
 import diagram.mcd.MCDDiagram;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import main.MVCCDElement;
 import main.MVCCDManager;
-import mcd.MCDAssEnd;
-import mcd.MCDAssociation;
-import mcd.MCDAttribute;
-import mcd.MCDConstraint;
-import mcd.MCDContDiagrams;
-import mcd.MCDContEntities;
-import mcd.MCDContModels;
-import mcd.MCDContRelations;
-import mcd.MCDEntity;
-import mcd.MCDGeneralization;
-import mcd.MCDLink;
-import mcd.MCDModel;
-import mcd.MCDNID;
-import mcd.MCDPackage;
-import mcd.MCDParameter;
-import mcd.MCDUnique;
-import mdr.MDRColumn;
-import mdr.MDRConstraint;
-import mdr.MDRFK;
-import mdr.MDRModel;
-import mdr.MDRPK;
-import mdr.MDRParameter;
-import mdr.MDRRelEnd;
-import mdr.MDRRelFKEnd;
-import mdr.MDRRelationFK;
-import mdr.MDRTable;
-import mldr.MLDRColumn;
-import mldr.MLDRFK;
-import mldr.MLDRModel;
-import mldr.MLDRModelDT;
-import mldr.MLDRModelTI;
-import mldr.MLDRPK;
-import mldr.MLDRParameter;
-import mldr.MLDRRelationFK;
-import mldr.MLDRTable;
-import mpdr.MPDRColumn;
-import mpdr.MPDRFK;
-import mpdr.MPDRModel;
-import mpdr.MPDRPK;
-import mpdr.MPDRParameter;
-import mpdr.MPDRTable;
+import mcd.*;
+import mdr.*;
+import mldr.*;
+import mpdr.*;
 import mpdr.mysql.MPDRMySQLModel;
 import mpdr.oracle.MPDROracleModel;
 import mpdr.postgresql.MPDRPostgreSQLModel;
-import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import preferences.Preferences;
 import preferences.PreferencesManager;
 import utilities.files.TranformerForXml;
@@ -75,6 +20,20 @@ import window.editor.diagrammer.elements.shapes.relations.RelationShape;
 import window.editor.diagrammer.elements.shapes.relations.labels.LabelShape;
 import window.editor.diagrammer.elements.shapes.relations.labels.LabelType;
 import window.editor.diagrammer.elements.shapes.relations.mcd.MCDAssociationShape;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 /**
  * @author Giorgio Roncallo, adapté et complété par Steve Berberat
@@ -1052,9 +1011,15 @@ public class ProjectSaverXml {
   private void addMLD(Document doc, ArrayList<MVCCDElement> models, Element racineTag) {
 
     //Pour chaque modèle MLDR (que ce soit MLDR_DT ou MLDR_TI)
-    for (MVCCDElement model : models) {
-      if (model instanceof MLDRModel) {
-        MLDRModel mldrModel = (MLDRModel) model;
+    //#MAJ 2022-06-28 Parcours des Modèles logiques erroné
+    //for (MVCCDElement model : models) {
+    //if (model instanceof MLDRModel) {
+    //MLDRModel mldrModel = (MLDRModel) model;
+
+    for (int i = 0; i < models.size(); i++) {
+      MVCCDElement mvccdElement = models.get(i);
+      if (mvccdElement instanceof MLDRModel) {
+        MLDRModel mldrModel = (MLDRModel) mvccdElement;
 
         //Création de la balise <MLDR_xx>
         Element mldrTag = null;

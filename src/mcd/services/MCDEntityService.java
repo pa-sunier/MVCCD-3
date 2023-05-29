@@ -26,6 +26,7 @@ public class MCDEntityService {
     };
 
 
+
     public static ArrayList<MCDRelEnd> getMCDRelEnds(MCDEntity mcdEntity) {
         MCDContRelEnds mcdContRelEnds = mcdEntity.getMCDContRelEnds();
         return mcdContRelEnds.getMCDRelEnds();

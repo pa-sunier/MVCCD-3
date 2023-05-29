@@ -30,6 +30,7 @@ public class FileRead {
     // A voir la version dans UtilFile
     public static String readToString(Path path) {
         String content = "";
+
         try (BufferedReader bufferedReader = Files.newBufferedReader(path)) {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {

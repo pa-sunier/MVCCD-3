@@ -10,137 +10,29 @@ import console.ViewLogsManager;
 import console.WarningLevel;
 import diagram.mcd.MCDDiagram;
 import diagram.mpdr.MPDRDiagram;
-import mcd.MCDAssEnd;
-import mcd.MCDAssociation;
-import mcd.MCDAttribute;
-import mcd.MCDContAttributes;
-import mcd.MCDContConstraints;
-import mcd.MCDContDiagrams;
-import mcd.MCDContEntities;
-import mcd.MCDContModels;
-import mcd.MCDContRelEnds;
-import mcd.MCDContRelations;
-import mcd.MCDElement;
-import mcd.MCDEntity;
-import mcd.MCDGSEnd;
-import mcd.MCDGeneralization;
-import mcd.MCDLink;
-import mcd.MCDLinkEnd;
-import mcd.MCDModel;
-import mcd.MCDNID;
-import mcd.MCDPackage;
-import mcd.MCDParameter;
-import mcd.MCDRelation;
-import mcd.MCDUnique;
+import mcd.*;
 import mcd.interfaces.IMCDModel;
 import mcd.interfaces.IMCDSourceMLDRRelationFK;
 import mcd.interfaces.IMCDSourceMLDRTable;
 import mcd.services.IMCDModelService;
-import mdr.MDRConstraint;
-import mdr.MDRContColumns;
-import mdr.MDRContConstraints;
-import mdr.MDRContTables;
-import mdr.MDRFK;
-import mdr.MDRRelFKEnd;
-import mdr.MDRTable;
+import mdr.*;
 import mdr.interfaces.IMDRParameter;
 import messages.MessagesBuilder;
-import mldr.MLDRColumn;
-import mldr.MLDRConstraintCustomAudit;
-import mldr.MLDRConstraintCustomJnal;
-import mldr.MLDRConstraintCustomSpecialized;
-import mldr.MLDRContColumns;
-import mldr.MLDRContConstraints;
-import mldr.MLDRContRelEnds;
-import mldr.MLDRContRelations;
-import mldr.MLDRContTables;
-import mldr.MLDRFK;
-import mldr.MLDRModel;
-import mldr.MLDRModelDT;
-import mldr.MLDRModelTI;
-import mldr.MLDRPK;
-import mldr.MLDRParameter;
-import mldr.MLDRRelFKEnd;
-import mldr.MLDRRelationFK;
-import mldr.MLDRTable;
-import mldr.MLDRUnique;
+import mldr.*;
 import mldr.interfaces.IMLDRElement;
 import mldr.interfaces.IMLDRSourceMPDRCConstraintSpecifc;
 import mldr.services.MLDRContConstraintsService;
-import mpdr.MPDRColumn;
-import mpdr.MPDRConstraintCustomJnal;
-import mpdr.MPDRContColumns;
-import mpdr.MPDRContConstraints;
-import mpdr.MPDRContDiagrams;
-import mpdr.MPDRContRelEnds;
-import mpdr.MPDRContRelations;
-import mpdr.MPDRContTables;
-import mpdr.MPDRModel;
-import mpdr.MPDRParameter;
-import mpdr.MPDRRelFKEnd;
-import mpdr.MPDRRelationFK;
-import mpdr.MPDRTable;
+import mpdr.*;
 import mpdr.interfaces.IMPDRModelRequirePackage;
-import mpdr.mysql.MPDRMySQLCheckSpecific;
-import mpdr.mysql.MPDRMySQLColumn;
-import mpdr.mysql.MPDRMySQLConstraintCustomAudit;
-import mpdr.mysql.MPDRMySQLConstraintCustomJnal;
-import mpdr.mysql.MPDRMySQLConstraintCustomSpecialized;
-import mpdr.mysql.MPDRMySQLFK;
-import mpdr.mysql.MPDRMySQLIndex;
-import mpdr.mysql.MPDRMySQLModel;
-import mpdr.mysql.MPDRMySQLPK;
-import mpdr.mysql.MPDRMySQLParameter;
-import mpdr.mysql.MPDRMySQLTable;
-import mpdr.mysql.MPDRMySQLUnique;
+import mpdr.mysql.*;
 import mpdr.mysql.interfaces.IMPDRMySQLElement;
-import mpdr.oracle.MPDROracleCheckSpecific;
-import mpdr.oracle.MPDROracleColumn;
-import mpdr.oracle.MPDROracleColumnView;
-import mpdr.oracle.MPDROracleConstraintCustomAudit;
-import mpdr.oracle.MPDROracleConstraintCustomJnal;
-import mpdr.oracle.MPDROracleConstraintCustomSpecialized;
-import mpdr.oracle.MPDROracleFK;
-import mpdr.oracle.MPDROracleIndex;
-import mpdr.oracle.MPDROracleModel;
-import mpdr.oracle.MPDROraclePK;
-import mpdr.oracle.MPDROracleParameter;
-import mpdr.oracle.MPDROracleSequence;
-import mpdr.oracle.MPDROracleTable;
-import mpdr.oracle.MPDROracleUnique;
+import mpdr.oracle.*;
 import mpdr.oracle.interfaces.IMPDROracleElement;
-import mpdr.postgresql.MPDRPostgreSQLCheckSpecific;
-import mpdr.postgresql.MPDRPostgreSQLColumn;
-import mpdr.postgresql.MPDRPostgreSQLConstraintCustomAudit;
-import mpdr.postgresql.MPDRPostgreSQLConstraintCustomJnal;
-import mpdr.postgresql.MPDRPostgreSQLConstraintCustomSpecialized;
-import mpdr.postgresql.MPDRPostgreSQLFK;
-import mpdr.postgresql.MPDRPostgreSQLIndex;
-import mpdr.postgresql.MPDRPostgreSQLModel;
-import mpdr.postgresql.MPDRPostgreSQLPK;
-import mpdr.postgresql.MPDRPostgreSQLParameter;
-import mpdr.postgresql.MPDRPostgreSQLSequence;
-import mpdr.postgresql.MPDRPostgreSQLTable;
-import mpdr.postgresql.MPDRPostgreSQLUnique;
+import mpdr.postgresql.*;
 import mpdr.postgresql.intefaces.IMPDRPostgreSQLElement;
-import mpdr.tapis.MPDRBoxPackages;
-import mpdr.tapis.MPDRBoxTriggers;
-import mpdr.tapis.MPDRContColumnsJnal;
-import mpdr.tapis.MPDRContTAPIs;
-import mpdr.tapis.MPDRView;
-import mpdr.tapis.oracle.MPDROracleBoxPackages;
-import mpdr.tapis.oracle.MPDROracleBoxTriggers;
-import mpdr.tapis.oracle.MPDROracleColumnAudit;
-import mpdr.tapis.oracle.MPDROracleColumnJnalDatas;
-import mpdr.tapis.oracle.MPDROracleColumnJnalTech;
-import mpdr.tapis.oracle.MPDROraclePackage;
-import mpdr.tapis.oracle.MPDROracleTableJnal;
-import mpdr.tapis.oracle.MPDROracleTrigger;
-import mpdr.tapis.oracle.MPDROracleView;
-import mpdr.tapis.postgresql.MPDRPostgreSQLBoxProceduresOrFunctions;
-import mpdr.tapis.postgresql.MPDRPostgreSQLBoxTriggers;
-import mpdr.tapis.postgresql.MPDRPostgreSQLFunction;
-import mpdr.tapis.postgresql.MPDRPostgreSQLTrigger;
+import mpdr.tapis.*;
+import mpdr.tapis.oracle.*;
+import mpdr.tapis.postgresql.*;
 import preferences.Preferences;
 import preferences.PreferencesManager;
 import project.Project;
@@ -890,6 +782,17 @@ public class MVCCDElementFactory {
     return mpdrPostgreSQLColumn;
   }
 
+
+  public MPDRPostgreSQLColumnJnalTech createMPDRPostgreSQLColumnJnalTech(MDRContColumns mdrContColumns, MPDRConstraintCustomJnal mpdrConstraintCustomJnal, Stereotype stereotype) {
+    MPDRPostgreSQLColumnJnalTech mpdrOracleColumnJnalTech = new MPDRPostgreSQLColumnJnalTech(mdrContColumns, mpdrConstraintCustomJnal, stereotype);
+    return mpdrOracleColumnJnalTech;
+  }
+
+  public MPDRPostgreSQLColumnJnalDatas createMPDRPostgreSQLColumnJnalDatas(MDRContColumns mdrContColumns, MPDRColumn mpdrColumnSource) {
+    MPDRPostgreSQLColumnJnalDatas mpdrPostgreSQLColumnJnalDatas = new MPDRPostgreSQLColumnJnalDatas(mdrContColumns, mpdrColumnSource);
+    return mpdrPostgreSQLColumnJnalDatas;
+  }
+
   //TODO-PAS: PK pour PostgreSQL
 
   public MPDRPostgreSQLPK createMPDRPostgreSQLPK(MDRContConstraints mdrContConstraints, MLDRPK mldrPK, int id) {
@@ -983,6 +886,13 @@ public class MVCCDElementFactory {
     return mpdrPostgreSQLFunction;
   }
 
+  public MPDRPostgreSQLTableJnal createMPDRPostgreSQLTableJnal(MPDRContTAPIs mpdrContTAPIs, MLDRConstraintCustomJnal mldrConstraintCustomJnal) {
+    MPDRPostgreSQLTableJnal mpdrPostgreSQLTableJnal = new MPDRPostgreSQLTableJnal(mpdrContTAPIs, mldrConstraintCustomJnal);
+    new MPDRContColumnsJnal(mpdrPostgreSQLTableJnal, Preferences.REPOSITORY_MDR_COLUMNS_NAME);
+    return mpdrPostgreSQLTableJnal;
+  }
+
+
   //Tous les MPDR
   private void createMPDRContModel(MPDRModel mpdrModel) {
     new MPDRContTables(mpdrModel, Preferences.REPOSITORY_MDR_TABLES_NAME);
@@ -1001,7 +911,7 @@ public class MVCCDElementFactory {
   }
 
   private void initMPDRView(MPDRView mpdrView) {
-    new MPDRContColumns(mpdrView, Preferences.REPOSITORY_MDR_COLUMNS_NAME);
+    new MPDRContColumnsView(mpdrView, Preferences.REPOSITORY_MDR_COLUMNS_NAME);
     //new MPDRContConstraints(mpdrView, Preferences.REPOSITORY_MDR_CONSTRAINTS_NAME);
   }
 

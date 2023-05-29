@@ -170,8 +170,11 @@ public class MPDRPostgreSQLTable extends MPDRTable implements IMPDRPostgreSQLEle
 
     @Override
     public MPDRTableJnal createTableJnal(MLDRConstraintCustomJnal mldrConstraintCustomJnal) {
-        return null;
+        MPDRTableJnal newTableJnal = MVCCDElementFactory.instance().createMPDROracleTableJnal(
+                getMPDRContTAPIs(), mldrConstraintCustomJnal);
+        return newTableJnal;
     }
+
 
 
     @Override

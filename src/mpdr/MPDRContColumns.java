@@ -19,7 +19,7 @@ public class MPDRContColumns extends MDRContColumns {
 
     public ArrayList<MPDRColumn> getMPDRColumns(){
         ArrayList<MPDRColumn> resultat = new ArrayList<MPDRColumn>();
-        for (MVCCDElement mvccdElement: getChilds()){
+        for (MVCCDElement mvccdElement: getChilds()) {
             resultat.add((MPDRColumn) mvccdElement);
         }
         return resultat;
