@@ -127,6 +127,7 @@ public class StereotypesCreateDefault {
         }
     }
 
+    /*
     private void createStereotypesMCDUF() {
         for (int i = 0; i < Preferences.STEREOTYPE_UF_MAX; i++){
             createStereotypeMulti(
@@ -141,6 +142,8 @@ public class StereotypesCreateDefault {
                     i );
         }
     }
+
+     */
 
     private void createMDR() {
         createStereotype(

@@ -5,12 +5,6 @@ import console.WarningLevel;
 import main.MVCCDManager;
 import main.MVCCDWindow;
 import messages.MessagesBuilder;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.Plot;
-import org.jfree.chart.plot.PlotRenderingInfo;
-import org.jfree.chart.plot.PlotState;
-import org.jfree.svg.SVGGraphics2D;
-import org.jfree.svg.SVGUtils;
 import preferences.Preferences;
 import preferences.PreferencesManager;
 import project.Project;
@@ -24,8 +18,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -166,11 +158,9 @@ public class WinMenuContent implements ActionListener {
         int returnVal = fileChooser.showSaveDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
           if (source == exportSVG) {
-            exportToSVG(drawPanel,
-                    fileChooser.getSelectedFile().toString());
+            //exportToSVG(drawPanel, fileChooser.getSelectedFile().toString());
           } else {
-            exportToPNG(drawPanel,
-                    fileChooser.getSelectedFile().toString());
+            //exportToPNG(drawPanel, fileChooser.getSelectedFile().toString());
           }
 
         }
@@ -224,6 +214,7 @@ public class WinMenuContent implements ActionListener {
     }
   }
 
+  /*
   public void exportToSVG(DrawPanel panel, String fileName) {
     // On va récupérer le rectangle autour des formes graphiques dans le diagramme en gardant une bordure de 10 pixels
     Rectangle rectangle = panel.getContentBounds(panel.getShapes(), 10);
@@ -271,6 +262,9 @@ public class WinMenuContent implements ActionListener {
     }
   }
 
+
+   */
+
   public void exportToPNG(DrawPanel panel, String fileName) {
     // On va récupérer le rectangle autour des formes graphiques dans le diagramme en gardant une bordure de 10 pixels
     Rectangle rectangle = panel.getContentBounds(panel.getShapes(), 10);
@@ -313,6 +307,8 @@ public class WinMenuContent implements ActionListener {
       applicationPref.setDIAGRAMMER_SHOW_GRID(true);
     }
   }
+
+
 
   private void newProject() {
     if (MVCCDManager.instance().getProject() == null) {

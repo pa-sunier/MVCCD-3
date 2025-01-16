@@ -93,8 +93,8 @@ public class DropTargetListener extends DropTargetAdapter {
             fatherNode.toString(),
             List.of(
                     new MPDRTriggerShape((MDRTable) fatherNode.getUserObject()),
-                    new MPDRProcedureContainerShape((MDRTable) fatherNode.getUserObject()),
-                    new MPDRSequenceShape((MDRTable) fatherNode.getUserObject())
+                    new MPDRProcedureContainerShape((MDRTable) fatherNode.getUserObject())
+                    //new MPDRSequenceShape((MDRTable) fatherNode.getUserObject())
             )
     );
 

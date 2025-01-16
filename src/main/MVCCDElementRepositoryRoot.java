@@ -1,12 +1,13 @@
 package main;
 
-import messages.MessagesBuilder;
-
 public class MVCCDElementRepositoryRoot extends MVCCDElement {
 
 
     public MVCCDElementRepositoryRoot() {
-        super(null, MessagesBuilder.getMessagesProperty("repository.root.name"));
+
+        //PAS 2025-01-16
+        //super(null, MessagesBuilder.getMessagesProperty("repository.root.name"));
+        super(null, "Référentiel");
     }
 
 

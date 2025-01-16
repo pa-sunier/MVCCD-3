@@ -1,11 +1,6 @@
 package window.editor.diagrammer.elements.shapes;
 
-import static preferences.Preferences.DIAGRAMMER_MPDRPROCEDURECONTAINER_DEFAULT_BACKGROUND_COLOR;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import mdr.MDRTable;
 import mpdr.MPDRTable;
 import mpdr.tapis.MPDRBoxPackages;
@@ -13,6 +8,8 @@ import mpdr.tapis.MPDRContTAPIs;
 import preferences.Preferences;
 import window.editor.diagrammer.elements.interfaces.UMLPackageIntegrableShapes;
 import window.editor.diagrammer.elements.shapes.classes.ClassShape;
+
+import java.awt.*;
 
 public class MPDRProcedureContainerShape extends ClassShape implements
     UMLPackageIntegrableShapes {
@@ -25,7 +22,7 @@ public class MPDRProcedureContainerShape extends ClassShape implements
 
   @Override
   protected void defineBackgroundColor() {
-    this.setBackground(DIAGRAMMER_MPDRPROCEDURECONTAINER_DEFAULT_BACKGROUND_COLOR);
+    //this.setBackground(DIAGRAMMER_MPDRPROCEDURECONTAINER_DEFAULT_BACKGROUND_COLOR);
     this.setOpaque(false);
   }
 

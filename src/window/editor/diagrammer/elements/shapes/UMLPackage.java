@@ -1,16 +1,6 @@
 package window.editor.diagrammer.elements.shapes;
 
-import static preferences.Preferences.DIAGRAMMER_UMLPACKAGE_DEFAULT_BACKGROUND_COLOR;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.util.List;
-import java.util.Objects;
 import preferences.Preferences;
 import window.editor.diagrammer.elements.interfaces.UMLPackageIntegrableShapes;
 import window.editor.diagrammer.elements.shapes.relations.RelationAnchorPointShape;
@@ -18,6 +8,12 @@ import window.editor.diagrammer.elements.shapes.relations.RelationShape;
 import window.editor.diagrammer.listeners.UMLPackageListener;
 import window.editor.diagrammer.services.DiagrammerService;
 import window.editor.diagrammer.utils.GeometryUtils;
+
+import java.awt.*;
+import java.util.List;
+import java.util.Objects;
+
+import static preferences.Preferences.DIAGRAMMER_UMLPACKAGE_DEFAULT_BACKGROUND_COLOR;
 
 public class UMLPackage extends SquaredShape {
 

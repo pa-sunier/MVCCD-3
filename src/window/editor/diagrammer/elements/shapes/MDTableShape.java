@@ -1,20 +1,18 @@
 package window.editor.diagrammer.elements.shapes;
 
-import static preferences.Preferences.DIAGRAMMER_MDTABLE_DEFAULT_BACKGROUND_COLOR;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.io.Serializable;
-import java.util.Objects;
 import mdr.MDRTable;
 import mpdr.MPDRTable;
 import preferences.Preferences;
 import window.editor.diagrammer.elements.shapes.classes.ClassShape;
 import window.editor.diagrammer.listeners.MDTableShapeListener;
 import window.editor.diagrammer.utils.UIUtils;
+
+import java.awt.*;
+import java.io.Serializable;
+import java.util.Objects;
+
+import static preferences.Preferences.DIAGRAMMER_MDTABLE_DEFAULT_BACKGROUND_COLOR;
 
 public class MDTableShape extends ClassShape implements Serializable {
 
